@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="content">
+    <h1>Video Generator</h1>
+    <p>Create amazing videos with our AI-powered video generator. Enter a keyword and see the magic!</p>
+    <div class="container">
+        <h1>Generate Video With Our AI</h1>
+        <form action="{% url 'videos' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="video" placeholder="Type here ..." />
+            <button class="generate-btn" type="submit">Generate</button>
+        </form>
+    
+        <div class="result">
+            <p>Generated Video will show in here </p>
+            <video src="{{video}}"></video>
+        </div>
+    </div>
+
+{% endblock %}

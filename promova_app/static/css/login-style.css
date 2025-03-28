@@ -1,0 +1,173 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #3b1c78, #ec3773, #ebcf72 ,#5b5959);
+}
+.logo{
+    width: 5%;
+    border-radius: 50%;
+}
+.promova , .login{
+    font-family:serif;
+    color: #06698d;
+    font-style: italic;
+    text-shadow: 2px 2px 4px #918282;
+    font-size:2rm;
+    font-weight: bolder;
+}
+.vision{
+    font-family: serif;
+    color: #0c2129;
+    text-shadow: 2px 2px 4px #918282;
+}
+.main{
+    width: fit-content;
+    margin: 0px auto;
+    padding: 15px;
+    border: 2px solid #6b6b6b;
+    margin-top: 20px;
+    box-shadow: 2px 2px 4px #06698d;
+}
+
+footer{
+  text-align: right;
+  position: relative;
+  margin-top: 30px;
+  margin-right: 15px;
+}
+h3 ,figcaption{
+    color: #033d54;
+}
+.blockquote-footer{
+    color: #eaeef0;
+}
+.no-account,.have-account{
+    color: #ccd6da;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-style: italic;
+    text-decoration: none;
+    margin: 15px;
+    padding: 15px;
+}
+.error{
+    color: #fbfcfc;
+    font-family: serif;
+    font-style: italic;
+    list-style:upper-roman;
+}
+.success{
+    color: #9af7d4;
+    font-family: serif;
+    font-style: italic;
+    list-style:upper-roman;
+}
+
+
+/* ***************************** for the log in */
+
+.login-container {
+    border-radius: 15px;
+    padding: 30px;
+    width: 300px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(50px);
+    border: 1px solid #05090b;
+}
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #2575fc;
+}
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.login-container button {
+    background-color: #074a7a;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.login-container button:hover {
+    background-color: #02354f;
+}
+.login-container a {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #2575fc;
+    text-decoration: none;
+}
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* **************************************** for the rigister */
+.form-container {
+    width: 400px;
+    padding: 25px;
+    backdrop-filter: blur(50px);
+    border: 1px solid #05090b;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+.form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+.form-container p {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #666;
+}
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+.form-container input:focus {
+    border-color: #ff7e5f;
+}
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background: #ff7e5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+.form-container button:hover {
+    background: #fc636b;
+}
+.form-container .link {
+    text-align: center;
+    margin-top: 20px;
+}
+.form-container .link a {
+    color: #2903b5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-container .link a:hover {
+    text-decoration: underline;
+    color: #0b0b0b;
+    font-weight: bolder;
+}

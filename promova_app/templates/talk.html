@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="chat-container">
+    <h1>AI Chat</h1>
+    <p>Start a conversation with AI and enjoy seamless communication.</p>
+    
+    <div class="chat-box">
+        <div class="message user-message">Hello, AI! <br><p>{{question}}</p></div>
+        
+        <div class="message ai-message">Hi there! How can I assist you today? <br><p class="message ai-message">{{answer}}</p></div>
+        
+    </div>
+
+    <div style="margin-top: 20px;">
+        <form action="{% url 'talk' %}" method="post">
+            {% csrf_token %}
+            <input class="talk" type="text" name="talk" placeholder="Type your message..." />
+            <button type="submit" class="generate-btn">Send</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

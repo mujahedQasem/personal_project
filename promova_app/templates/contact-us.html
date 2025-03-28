@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="main-contact">
+    <h1>Contact Us</h1>
+    <div class="contact-container">
+        <p>We would love to hear from you! Please send us A message below.</p>
+        <form action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            <textarea name="contact" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <div class="social-media ">
+        <p>you can also keep in touch with us By </p>
+        <a href="https://github.com/mujahedQasem">GitHub</a>
+        <a href="https://www.linkedin.com/in/mujahed-qasem/">LinkedIn</a>
+        <a href="https://www.facebook.com/mujahedq/">Facebook</a>
+    </div>
+    
+</div>
+
+{% endblock %}

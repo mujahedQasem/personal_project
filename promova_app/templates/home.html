@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="main-home">
+    <div class="left-home">
+        <h2 class="text-center">Why <span>Promova</span>?</h2>
+        <hr>
+        <p> With Promova, brands can effortlessly create customized visuals that align with their identity and messaging.</p>
+        <hr>
+        <p>The platform offers tools to design captivating advertisements, optimize audience engagement, and explore unique creative concepts.</p>
+        <hr>
+        <p>Whether it's for social media marketing, product launches, or large-scale campaigns, Promova brings efficiency, creativity, and innovation to the forefront of digital advertising.</p>
+    </div>
+    <div class="right-home">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'images/slider-img.jpg'%}" class="d-block w-100" alt="AI image">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'images/slider-img2.jpg'%}" class="d-block w-100" alt="AI image">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'images/slider-img3.jpg'%}" class="d-block w-100" alt="AI image">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+</div>
+{% endblock %}
