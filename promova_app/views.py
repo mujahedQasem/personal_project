@@ -88,7 +88,8 @@ def images(request):
     if 'user_id' in request.session:
         user_id = request.session['user_id']
         context= {
-            'user':Users.objects.get(id=user_id)
+            'user':Users.objects.get(id=user_id),
+            'images':Images.objects.filter(user = Users.objects.get(id=user_id))
         }
         if request.method == 'POST':
             response = requests.post(
@@ -110,10 +111,15 @@ def images(request):
             data = response.json()
             print(data)
             img = data["data"][0]["url"]
+            Images.objects.create(
+                url = img,
+                user = Users.objects.get(id=user_id)
+            )
             context = {
                 'img':img,
                 'user_prompt':request.POST['img'],
-                'user':Users.objects.get(id=user_id)
+                'user':Users.objects.get(id=user_id),
+                'images':Images.objects.filter(user = Users.objects.get(id=user_id))
             }
             return render(request,'images.html',context)
         return render(request,'images.html',context)
@@ -151,14 +157,15 @@ def videos(request):
 def contact(request):
     if 'user_id' in request.session:
         user_id = request.session['user_id']
-        context = {
+        text = {
             'user':Users.objects.get(id=user_id)
         }
         if request.method == 'POST':
 
 
             return redirect('home')
-        return render(request,'contact-us.html')
+        else:
+            return render(request,'contact-us.html')
     else:
         return redirect('/')
 

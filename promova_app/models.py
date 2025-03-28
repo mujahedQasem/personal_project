@@ -32,3 +32,15 @@ class Users(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = Usermanager()
 # Create your models here.
+
+class Images(models.Model):
+    url = models.TextField()
+    user = models.ForeignKey(Users,related_name='image',on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Videos(models.Model):
+    url = models.TextField()
+    user = models.ForeignKey(Users,related_name='video',on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
