@@ -127,45 +127,52 @@ def images(request):
         return redirect('/')
 
 def videos(request):
-    if request.method == 'POST':
-        url = "https://api.aimlapi.com/v2/generate/video/alibaba/generation"
-        payload = {
-        "model": "wan/v2.1/1.3b/text-to-video",
-        "prompt": "playing baby",
-        "aspect_ratio": "16:9",
+    if 'user_id' in request.session:
+        user_id = request.session['user_id']
+        context = {
+            'user':Users.objects.get(id = user_id)
         }
-        headers = {
-        "Authorization": "Bearer 446eda63ca72487c9089bad3800d270d",
-          "Content-Type": "application/json"
-          }
+        if request.method == 'POST':
+            url = "https://api.aimlapi.com/v2/generate/video/alibaba/generation"
+            payload = {
+            "model": "wan/v2.1/1.3b/text-to-video",
+            "prompt": "playing baby",
+            "aspect_ratio": "16:9",
+            }
+            headers = {
+            "Authorization": "Bearer 446eda63ca72487c9089bad3800d270d",
+            "Content-Type": "application/json"
+            }
 
-        response = requests.post(url, json=payload, headers=headers)
-        json_response = response.json()
-        print("Generation:", response.json())
-        url = "https://api.aimlapi.com/v2/generate/video/alibaba/generation"
-        params = {
-            "generation_id": json_response["id"],
-        }
-        headers = {"Authorization": "Bearer 446eda63ca72487c9089bad3800d270d", "Content-Type": "application/json"}
+            response = requests.post(url, json=payload, headers=headers)
+            json_response = response.json()
+            print("Generation:", response.json())
+            url = "https://api.aimlapi.com/v2/generate/video/alibaba/generation"
+            params = {
+                "generation_id": json_response["id"],
+            }
+            headers = {"Authorization": "Bearer 446eda63ca72487c9089bad3800d270d", "Content-Type": "application/json"}
 
-        response = requests.get(url, params=params, headers=headers)
-        print("Generation:", response.json())
-        print(response["video"]["url"])
-        return render(request,'video.html')
-    return render(request,'video.html')
+            response = requests.get(url, params=params, headers=headers)
+            print("Generation:", response.json())
+            print(response["video"]["url"])
+            return render(request,'video.html',context)
+        return render(request,'video.html',context)
+    else:
+        return redirect('/')
 
 def contact(request):
     if 'user_id' in request.session:
         user_id = request.session['user_id']
-        text = {
+        context = {
             'user':Users.objects.get(id=user_id)
         }
         if request.method == 'POST':
-
+            
 
             return redirect('home')
         else:
-            return render(request,'contact-us.html')
+            return render(request,'contact-us.html',context)
     else:
         return redirect('/')
 
