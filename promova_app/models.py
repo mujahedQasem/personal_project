@@ -44,3 +44,9 @@ class Videos(models.Model):
     user = models.ForeignKey(Users,related_name='video',on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class MessagesFromUser(models.Model):
+    message = models.TextField()
+    user = models.ForeignKey(Users,related_name='message',on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

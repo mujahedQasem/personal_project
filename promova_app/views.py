@@ -168,8 +168,10 @@ def contact(request):
             'user':Users.objects.get(id=user_id)
         }
         if request.method == 'POST':
-            
-
+            MessagesFromUser.objects.create(
+                message = request.POST['contact'],
+                user = Users.objects.get(id =user_id)
+            )
             return redirect('home')
         else:
             return render(request,'contact-us.html',context)
