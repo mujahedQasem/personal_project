@@ -55,7 +55,8 @@ def talk(request):
     if 'user_id' in request.session:
         user_id = request.session['user_id']
         context ={
-            'user':Users.objects.get(id=user_id)
+            'user':Users.objects.get(id=user_id),
+            'chats':Chats.objects.filter(user = Users.objects.get(id = user_id))
         }
         if request.method == 'POST':
             base_url = "https://api.aimlapi.com/v1"
@@ -75,10 +76,16 @@ def talk(request):
             
             response = completion.choices[0].message.content
             context ={
-                'question': user_prompt,
-                'answer':response,
-                'user':Users.objects.get(id=user_id)
+                'questions': user_prompt,
+                'answers':response,
+                'user':Users.objects.get(id=user_id),
+                'chats':Chats.objects.filter(user = Users.objects.get(id = user_id))
             }
+            Chats.objects.create(
+                question = user_prompt,
+                answer = response,
+                user = Users.objects.get(id = user_id)
+            )
             return render(request,'talk.html',context)
         return render(request,'talk.html',context)
     else:

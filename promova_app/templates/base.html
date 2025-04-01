@@ -15,7 +15,7 @@
             <img class="logo" src="{% static 'images/logo.jpg.png' %}" alt="app logo">
             <h3 class="promova">Promova</h3>
         </div>
-        <p id="user" class="welcome">Welcome! , {{user.name}} </p>
+        <p id="user" class="welcome">Welcome! ، <span>{{user.name}}</span>  </p>
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'talk' %}">Chat</a>
         <a href="{% url 'images' %}">Images</a>

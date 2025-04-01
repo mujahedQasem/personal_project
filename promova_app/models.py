@@ -31,7 +31,6 @@ class Users(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = Usermanager()
-# Create your models here.
 
 class Images(models.Model):
     url = models.TextField()
@@ -50,3 +49,12 @@ class MessagesFromUser(models.Model):
     user = models.ForeignKey(Users,related_name='message',on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Chats(models.Model):
+    question = models.TextField()
+    answer = models.TextField()
+    user = models.ForeignKey(Users,related_name='chat',on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
