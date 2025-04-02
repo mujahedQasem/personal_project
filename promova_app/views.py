@@ -54,15 +54,17 @@ def home(request):
 def talk(request):
     if 'user_id' in request.session:
         user_id = request.session['user_id']
+        user = Users.objects.get(id = user_id)
         context ={
             'user':Users.objects.get(id=user_id),
             'chats':Chats.objects.filter(user = Users.objects.get(id = user_id))
         }
         if request.method == 'POST':
+            user_ask = request.POST['talk']
             base_url = "https://api.aimlapi.com/v1"
             api_key = "446eda63ca72487c9089bad3800d270d"
             system_prompt = "You are  market agent. Be descriptive and helpful. max pargraph is 265 words only."
-            user_prompt = request.POST['talk']
+            user_prompt = f'{user_ask} with {user.company} '
             api = OpenAI(api_key=api_key, base_url=base_url)
             completion = api.chat.completions.create(
             model="mistralai/Mistral-7B-Instruct-v0.2",
@@ -94,11 +96,13 @@ def talk(request):
 def images(request):
     if 'user_id' in request.session:
         user_id = request.session['user_id']
+        user = Users.objects.get(id =user_id)
         context= {
             'user':Users.objects.get(id=user_id),
             'images':Images.objects.filter(user = Users.objects.get(id=user_id))
         }
         if request.method == 'POST':
+            user_ask = request.POST['img']
             response = requests.post(
                 "https://api.aimlapi.com/v1/images/generations",
                 headers={
@@ -107,7 +111,7 @@ def images(request):
                 },
                 json={  # Use 'json' instead of 'data' for proper JSON handling
                     "model": "dall-e-3",
-                    "prompt": request.POST['img'],
+                    "prompt": f'{user_ask} with {user.company} To market the company products ',
                     "n": 1,
                     "quality": "standard",
                     "response_format": "url",
