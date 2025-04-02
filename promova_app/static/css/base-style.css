@@ -154,6 +154,14 @@ footer {
     margin-right: 10px;
     outline: none;
 }
+.user-chat{
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 .chats {
     display: flex;
     flex-direction: column;
